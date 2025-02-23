@@ -1,0 +1,27 @@
+{
+  "name": "threatfabric-test-engineer-assesment",
+  "version": "1.0.0",
+  "description": "ThreatFabric technical assessment for the position of Test Engineer",
+  "scripts": {
+    "test": "npx playwright test --headed",
+    "test:desktop": "npx playwright test --project=chromium --headed --project=firefox --headed --project=webkit --headed",
+    "test:mobile": "npx playwright test --project='Mobile Chrome' --headed",
+    "test:desktop:headless": "npx playwright test --project=chromium --project=firefox --project=webkit",
+    "test:mobile:headless": "npx playwright test --project='Mobile Chrome'",
+    "test:debug": "npx playwright test --debug",
+    "lint": "eslint . --ext .ts,.tsx"
+  },
+  "author": "Ricardo Toledo",
+  "license": "MIT",
+  "devDependencies": {
+    "@playwright/test": "^1.50.1",
+    "@types/node": "^22.13.5",
+    "@typescript-eslint/eslint-plugin": "^8.24.1",
+    "@typescript-eslint/parser": "^8.24.1",
+    "eslint": "^9.21.0",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-playwright": "^2.2.0",
+    "prettier": "^3.5.2",
+    "typescript": "^5.7.3"
+  }
+}
