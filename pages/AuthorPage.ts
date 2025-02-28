@@ -1,21 +1,24 @@
 import { Page, Locator } from '@playwright/test';
+import { SortOption } from '../types/DropdownOptions';
 
 export class AuthorPage {
   readonly page: Page;
-  readonly sortButton: Locator;
-  readonly topRatedBook: Locator;
+  readonly sortDropdown: Locator;
+  readonly topRatedBooks: Locator;
 
   constructor(page: Page) {
     this.page = page;
-    this.sortButton = page.getByRole('button', { name: 'Sort by Rating' });
-    this.topRatedBook = page.getByRole('link').first();
+    this.sortDropdown = page.locator('.sort-dropper summary');
+    this.topRatedBooks = page.locator('.searchResultItem h3 a');
   }
 
-  async sortByRating() {
-    await this.sortButton.click();
+  async sortBy(option: SortOption) {
+    await this.sortDropdown.click();
+    await this.page.locator(`.sort-content a:has-text("${option}")`).click();
   }
 
-  async getTopRatedBookTitle() {
-    return await this.topRatedBook.innerText();
+  async getBookTitleByIndex(index: number = 0) {
+    await this.topRatedBooks.nth(index).innerText();
   }
+
 }

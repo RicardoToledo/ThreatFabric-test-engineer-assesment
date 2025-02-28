@@ -3,6 +3,7 @@ export const testData = {
       title: 'Harry Potter',
       author: 'Rowling',
       expectedTopRated: 'Harry Potter and the Half-Blood Prince',
+      actualTopRated: 'Harry Potter and the Prisoner of Azkaban',
     },
     user: {
       valid: {
