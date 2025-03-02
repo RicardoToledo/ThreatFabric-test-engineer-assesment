@@ -9,10 +9,10 @@ export enum SearchType {
 }
 
 export enum Language {
-    ENGLISH = 'English',
-    SPANISH = 'Español',
-    FRENCH = 'Français',
-    GERMAN = 'Deutsch',
+    ENGLISH = 'en',
+    SPANISH = 'es',
+    FRENCH = 'fr',
+    GERMAN = 'de',
 }
 
 export enum SortOption {
@@ -23,4 +23,3 @@ export enum SortOption {
     READING_LOG = 'Reading Log',
     RANDOM = 'Random',
 }
-

@@ -18,7 +18,7 @@ export class AuthorPage {
   }
 
   async getBookTitleByIndex(index: number = 0) {
-    await this.topRatedBooks.nth(index).innerText();
+    return await this.topRatedBooks.nth(index).innerText();
   }
 
 }
