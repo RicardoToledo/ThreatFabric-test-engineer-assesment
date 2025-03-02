@@ -20,9 +20,10 @@ export default defineConfig({
         baseURL: 'https://openlibrary.org',
         headless: true,
         viewport: { width: 1280, height: 720 },
-        // trace: 'on',
-        // video: 'on',
-        // screenshot: 'on',
+        ignoreHTTPSErrors: true,
+        // screenshot: 'only-on-failure',
+        // video: 'retain-on-failure',
+        // trace: 'only-on-failure',
         launchOptions: {
           /* Slow down Playwright operations by the specified amount of milliseconds. */
           // slowMo: 1000

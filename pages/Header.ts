@@ -1,4 +1,4 @@
-import { Page, Locator, expect } from '@playwright/test';
+import { Page, Locator } from '@playwright/test';
 import { SearchType, Language } from '../types/DropdownOptions';
 
 export class Header {
@@ -21,7 +21,7 @@ export class Header {
 
     async searchForBook(bookTitle: string) {
         await this.searchBox.fill(bookTitle);
-        await this.page.keyboard.press('Enter');// Neecessary to pass the autofill step: title: "searchTerm"
+        await this.page.keyboard.press('Enter');// Neecessary to pass the step that autofills text as 'title: "searchTerm"'
         await this.searchButton.click();
     }
 

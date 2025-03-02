@@ -7,20 +7,19 @@ import { getCurrentLanguage } from '../../utils/uiHelpers';
 
 test.describe('Home Page Tests', () => {
 
-    test('UI-002 - Verify book details are correctly displayed after standard search', 
-        async ({ searchPage, header, bookDetailsPage }) => {
-        // 1. Search for a book by title
+    test('UI-002 - Verify book details are correctly displayed after standard search', async ({ searchPage, header, bookDetailsPage }) => {
+        // 1. Search for a book by partial title
         await header.selectSearchType(SearchType.TITLE);
-        await header.searchForBook(testData.book.title);
+        await header.searchForBook(testData.searchQueries.gameOfThrones.title);
 
         // 2. Select the first book containing the title from the search results
-        await searchPage.selectFirstBookByTitle(testData.book.title);
+        await searchPage.selectFirstBookByTitle(testData.searchQueries.gameOfThrones.title);
 
         // 3. Validate book title, author, description, and first published date
-        await expect(bookDetailsPage.bookTitle).toContainText(testData.book.title);
-        await expect(bookDetailsPage.bookAuthor).toHaveText(testData.book.author);
-        await expect(bookDetailsPage.bookDescription).toContainText(testData.book.description);
-        await expect(bookDetailsPage.firstPublishedDate).toContainText(testData.book.firstPublishedDate);
+        await expect(bookDetailsPage.bookTitle).toContainText(testData.books.gameOfThrones.title);
+        await expect(bookDetailsPage.bookAuthor).toHaveText(testData.books.gameOfThrones.author);
+        await expect(bookDetailsPage.bookDescription).toContainText(testData.books.gameOfThrones.description);
+        await expect(bookDetailsPage.firstPublishedDate).toContainText(testData.books.gameOfThrones.firstPublishedDate);
     });
 
     test('UI-003 - Verify homepage sections and their contents load correctly', async ({ homePage }) => {
