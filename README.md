@@ -48,11 +48,13 @@ This project is an automated test suite for the ThreatFabric technical assessmen
    Several technical challenges arose throughout the development process, requiring problem-solving and strategic decision-making:
     <details>
     <summary>Click to expand</summary>
-    - Handling Unreliable Locators: Not all elements in Open Library were developed with best practices in mind. Some HTML tags were incorrectly used, IDs were redundant or unnecessarily nested, dropdown were not properly initialized, and key elements lacked meaningful accessibility roles. Defining reliable locators required careful analysis to ensure stability across different test executions. The solution involved scoping locators more precisely, using .first(), .nth(n), or dynamically filtering elements based on text content.
+    
+      - Handling Unreliable Locators: Not all elements in Open Library were developed with best practices in mind. Some HTML tags were incorrectly used, IDs were redundant or unnecessarily nested, dropdown were not properly initialized, and key elements lacked meaningful accessibility roles. Defining reliable locators required careful analysis to ensure stability across different test executions. The solution involved scoping locators more precisely, using .first(), .nth(n), or dynamically filtering elements based on text content.
     - Dealing with the Donation Banner: A persistent donation banner appeared in every new session, blocking UI interactions. Handling this took time because the banner was embedded in an iframe, requiring a different approach for detection and interaction. The final solution involved dynamic detection within the test setup to handle it efficiently.  
     - Fixing API Response Validation: The API returned nested objects for author bios, initially causing assertion failures. The solution was to dynamically extract the `value` property, ensuring that tests validated only relevant data while maintaining flexibility for future API changes.  
     - Ensuring Cross-Browser Stability: Tests needed to be reliable across Chromium, Firefox, and WebKit, which required fine-tuning locators and handling minor UI discrepancies between browsers to maintain consistent behavior.  
-    </details>
+
+   </details>
 
 By focusing on real-world scalability, maintainability, and reliability, this framework ensures that the assessment requirements are successfully met, along with additional important Open Library functionalities being rigorously tested, providing flexibility for future expansion.
 
