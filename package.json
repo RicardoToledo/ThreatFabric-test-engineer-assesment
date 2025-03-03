@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "description": "ThreatFabric technical assessment for the position of Test Engineer",
   "scripts": {
-    "test": "npx playwright test --headed",
-    "test:desktop": "npx playwright test --project=chromium --headed --project=firefox --headed --project=webkit --headed",
-    "test:mobile": "npx playwright test --project='Mobile Chrome' --headed",
-    "test:desktop:headless": "npx playwright test --project=chromium --project=firefox --project=webkit",
-    "test:mobile:headless": "npx playwright test --project='Mobile Chrome'",
+    "test": "npx playwright test --project=chromium --headed",
+    "test:ui": "npx playwright test tests/ui --project=chromium --headed",
+    "test:api": "npx playwright test tests/api --project=chromium",
+    "test:headless": "npx playwright test --project=chromium",
+    "test:all-browsers-api": "npx playwright test tests/api --project=chromium --project=firefox --project=webkit",
+    "test:all-browsers-ui": "npx playwright test tests/ui --project=chromium --headed --project=firefox --headed --project=webkit --headed",
     "test:debug": "npx playwright test --debug",
     "lint": "eslint . --ext .ts,.tsx"
   },
