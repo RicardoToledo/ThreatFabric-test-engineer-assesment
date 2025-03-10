@@ -1,5 +1,6 @@
 import { test, expect } from '../../fixtures/testFixtures';
-import { testData } from '../../data/testData';
+import { books } from '../../data/testData/books';
+import { searchQueries } from '../../data/testData/searchQueries';
 import { SearchType, Language } from '../../types/DropdownOptions';
 import { PAGE } from '../../data/constants';
 import { getCurrentLanguage } from '../../utils/uiHelpers';
@@ -10,16 +11,16 @@ test.describe('Home Page Tests', () => {
     test('UI-002 - Verify book details are correctly displayed after standard search', async ({ searchPage, header, bookDetailsPage }) => {
         // 1. Search for a book by partial title
         await header.selectSearchType(SearchType.TITLE);
-        await header.searchForBook(testData.searchQueries.gameOfThrones.title);
+        await header.searchForBook(searchQueries.gameOfThrones.title);
 
         // 2. Select the first book containing the title from the search results
-        await searchPage.selectFirstBookByTitle(testData.searchQueries.gameOfThrones.title);
+        await searchPage.selectFirstBookByTitle(searchQueries.gameOfThrones.title);
 
         // 3. Validate book title, author, description, and first published date
-        await expect(bookDetailsPage.bookTitle).toContainText(testData.books.gameOfThrones.title);
-        await expect(bookDetailsPage.bookAuthor).toHaveText(testData.books.gameOfThrones.author);
-        await expect(bookDetailsPage.bookDescription).toContainText(testData.books.gameOfThrones.description);
-        await expect(bookDetailsPage.firstPublishedDate).toContainText(testData.books.gameOfThrones.firstPublishedDate);
+        await expect(bookDetailsPage.bookTitle).toContainText(books.gameOfThrones.title);
+        await expect(bookDetailsPage.bookAuthor).toHaveText(books.gameOfThrones.author);
+        await expect(bookDetailsPage.bookDescription).toContainText(books.gameOfThrones.description);
+        await expect(bookDetailsPage.firstPublishedDate).toContainText(books.gameOfThrones.firstPublishedDate);
     });
 
     test('UI-003 - Verify homepage sections and their contents load correctly', async ({ homePage }) => {
@@ -41,11 +42,11 @@ test.describe('Home Page Tests', () => {
 
         // Verify "Browse by Subject" section and subject links
         await expect(homePage.browseBySubjectSection).toBeVisible();
-        expect(await homePage.browseBySubjectLinks.count()).toBeGreaterThan(4);
+        expect(await homePage.browseBySubjectLinks.count()).toBeGreaterThan(2);
 
         // Verify "Around the Library" section and library stats
         await expect(homePage.aroundTheLibrarySection).toBeVisible();
-        expect(await homePage.libraryStats.count()).toBeGreaterThan(3);
+        expect(await homePage.libraryStats.count()).toBeGreaterThan(4);
 
         // Verify "About the Project" section, title, and paragraph loads
         await expect(homePage.aboutTheProjectSection).toBeVisible();

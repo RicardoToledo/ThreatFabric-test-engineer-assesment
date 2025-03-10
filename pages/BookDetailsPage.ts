@@ -11,7 +11,7 @@ export class BookDetailsPage {
     this.page = page;
     this.bookTitle = page.getByRole('heading', { level: 1 });
     this.bookAuthor = page.locator('a[itemprop="author"]').first();
-    this.bookDescription = page.locator('.book-description p');
+    this.bookDescription = page.locator('.book-description p').first();
     this.firstPublishedDate = page.locator('span.first-published-date').first(); // Selects the year in format:(1996)
   }
 }
