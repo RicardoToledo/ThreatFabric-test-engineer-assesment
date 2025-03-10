@@ -52,7 +52,7 @@ This project is an automated test suite for the ThreatFabric technical assessmen
       - Handling Unreliable Locators: Not all elements in Open Library were developed with best practices in mind. Some HTML tags were incorrectly used, IDs were redundant or unnecessarily nested, dropdown were not properly initialized, and key elements lacked meaningful accessibility roles. Defining reliable locators required careful analysis to ensure stability across different test executions. The solution involved scoping locators more precisely, using .first(), .nth(n), or dynamically filtering elements based on text content.
     - Dealing with the Donation Banner: A persistent donation banner appeared in every new session, blocking UI interactions. Handling this took time because the banner was embedded in an iframe, requiring a different approach for detection and interaction. The final solution involved dynamic detection within the test setup to handle it efficiently.  
     - Fixing API Response Validation: The API returned nested objects for author bios, initially causing assertion failures. The solution was to dynamically extract the `value` property, ensuring that tests validated only relevant data while maintaining flexibility for future API changes.  
-    - Ensuring Cross-Browser Stability: Tests needed to be reliable across Chromium, Firefox, and WebKit, which required fine-tuning locators and handling minor UI discrepancies between browsers to maintain consistent behavior.  
+    - Ensuring Cross-Browser Stability: Tests needed to be reliable across Chromium, Firefox, and WebKit, which required fine-tuning locators and handling minor UI discrepancies between browsers to maintain consistent behavior.
 
    </details>
 
@@ -65,7 +65,11 @@ By focusing on real-world scalability, maintainability, and reliability, this fr
 │   └── workflows/          # CI/CD workflows
 ├── data/                   # Test data files
 │   ├── paramTestData.ts    # Parameterized test data
-│   └── testData.ts         # General test data
+│   └── testData/          # Modular test data
+│       ├── types.ts       # TypeScript interfaces
+│       ├── books.ts       # Book test data
+│       ├── authors.ts     # Author test data
+│       └── searchQueries.ts # Search query test data
 ├── tests/                  # Test cases
 │   ├── api/                # API test cases
 │   └── ui/                 # UI test cases
@@ -137,7 +141,7 @@ Playwright generates an HTML report after each test execution. You can view the 
 | UI-004  | Verify language change functionality.                                                                       | UI, Localization | Language Selection                                         | 1. Open the language dropdown. <br> 2. Select a different language. <br> 3. Validate the website content updates accordingly.                                                                                                                                                                                                                      | The site updates language settings and displays content in the selected language.                                                          |
 | API-001 | Validate author website URL from API response.                                                              | API              | Author Key, Expected Website                               | 1. Perform an API request to fetch author details. <br> 2. Validate that the returned website matches the expected URL.                                                                                                                                                                                                                            | API response contains the correct author website URL.                                                                                      |
 | API-002 | Validate author birthdate and bio.                                                                          | API              | Author Key, Expected Birthdate, Bio Excerpt                | 1. Perform an API request to fetch author details. <br> 2. Validate the birthdate matches the expected value. <br> 3. Validate the bio contains the expected text excerpt.                                                                                                                                                                         | API response contains the correct birthdate and bio excerpt.                                                                               |
-| API-003 | Verify API returns correct top-rated book for an author.                                                    | API              | Search Title, Search Author, Expected Top-rated Title      | 1. Perform an API search request for an author’s books. <br> 2. Sort results by rating. <br> 3. Validate the first result matches the expected top-rated book.                                                                                                                                                                                     | API correctly returns the top-rated book for the given author.                                                                             |
+| API-003 | Verify API returns correct top-rated book for an author.                                                    | API              | Search Title, Search Author, Expected Top-rated Title      | 1. Perform an API search request for an author's books. <br> 2. Sort results by rating. <br> 3. Validate the first result matches the expected top-rated book.                                                                                                                                                                                     | API correctly returns the top-rated book for the given author.                                                                             |
 
 ## CI/CD with GitHub Actions
 
